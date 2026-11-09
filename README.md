@@ -1,100 +1,63 @@
-# Banking Management System
+# Banking Management System (Core Java & OOP)
 
-A console-based Banking Management System developed using Core Java and Object-Oriented Programming (OOP) concepts.
-
-This project is designed to strengthen Java programming fundamentals by implementing real-world banking operations through a structured and modular application.
-
-## Project Overview
-
-The Banking Management System allows users to perform basic banking operations such as creating accounts, depositing money, withdrawing money, checking balances, and transferring funds.
-
-The application will support different account types, including Savings Accounts and Current Accounts.
-
-## Technologies Used
-
-- Java (Core Java)
-- Object-Oriented Programming (OOP)
-- Eclipse IDE
-- Git and GitHub
-
-## Planned Features
-
-- [ ] Create a bank account
-- [ ] Display account details
-- [ ] Deposit money
-- [ ] Withdraw money
-- [ ] Balance enquiry
-- [ ] Transfer money between accounts
-- [ ] Savings Account management
-- [ ] Current Account management
-- [ ] Transaction history
-- [ ] Input validation
-
-## OOP Concepts Applied
-
-- Classes and Objects
-- Constructors
-- Encapsulation
-- Inheritance
-- Polymorphism
-- Abstraction
-- Abstract Classes
-- Interfaces
-
-## Project Architecture
-
-```text
-com.banking
-│
-├── model
-│   ├── Account.java
-│   ├── SavingsAccount.java
-│   ├── CurrentAccount.java
-│   ├── Customer.java
-│   └── Transaction.java
-│
-├── service
-│   ├── BankOperations.java
-│   └── BankService.java
-│
-├── ui
-│   └── BankingMenu.java
-│
-└── main
-    └── BankingApplication.java
-```
-
-## Development Roadmap
-
-**Phase 1: Core Java and OOP**
-- Implement account models.
-- Develop banking operations.
-- Implement validation and transaction history.
-
-**Phase 2: Collections and Exception Handling**
-- Manage accounts using Java Collections.
-- Handle invalid operations and runtime exceptions.
-
-**Phase 3: Database Integration**
-- Integrate JDBC and MySQL.
-- Persist customer, account and transaction information.
-
-**Phase 4: Advanced Development**
-- Upgrade the application using Spring Boot.
-- Develop REST APIs.
-- Implement Spring Security.
-
-## Learning Objective
-
-The primary objective is to apply theoretical Java and OOP concepts to a practical software development project while following clean coding practices and maintaining the project using Git and GitHub.
-
-## Author
-
-**Rupesh Patel**
-
-GitHub: [Rupesh-dvlpr](https://github.com/Rupesh-dvlpr)
+A robust, layered Console Banking Application built using Core Java, demonstrating key Object-Oriented Programming (OOP) principles, clean architecture, and defensive programming.
 
 ---
 
-*Project Status: Initial Development*  
-*This project is being developed incrementally as part of my Java Full Stack learning journey.*
+## 🏗️ Architecture & Package Structure
+
+The project follows a decoupled multi-layer architecture:
+
+```text
+com.banking
+ ├── model/           # Core domain models (Account, SavingsAccount, CurrentAccount, Customer, Transaction)
+ ├── service/         # Business logic layer (BankOperations interface & BankService implementation)
+ ├── ui/              # User interface layer (BankingMenu console CLI)
+ └── main/            # Application entry point (BankingApplication)
+ ```
+## ✨ Features & Business Rules
+Account Creation: Supports opening Savings Accounts (with interest calculation) and Current Accounts (with configurable overdraft limits).
+
+Deposits & Withdrawals: Enforces defensive input validation (positive amounts only) and overdraft checks.
+
+Fund Transfers: Atomic transfer logic between accounts with double-entry transaction record generation.
+
+Audit Trail: Immutable, formatted LocalDateTime timestamped transaction logs for every transaction (DEPOSIT, WITHDRAWAL, TRANSFER_IN, TRANSFER_OUT).
+
+Resilient CLI Menu: Buffer-safe String reading and global exception handling to prevent runtime menu crashes.
+
+##🛠️ Tech Stack & Key Concepts Demonstrated
+Language: Java 8+
+
+IDE: Eclipse
+
+Version Control: Git & GitHub
+
+OOP Concepts: Encapsulation, Inheritance, Polymorphism, Abstraction, Aggregation/Composition
+
+Design Patterns: Interface-based programming, Layered Architecture, Defensive Programming
+
+##🚀 How to Run
+Clone the Repository:
+
+```Bash
+git clone https://github me/<your-username>/java-banking-management-system.git
+cd java-banking-management-system
+Import into Eclipse IDE:
+
+File -> Import -> Existing Projects into Workspace -> Select project directory.
+
+Run Application:
+
+Navigate to com.banking.main.BankingApplication.java
+
+Right-click -> Run As -> Java Application
+```
+##📈 Next Up (Phase 2 Roadmap)
+[ ] Refactor array storage (Customer[], Transaction[]) to Java Collections Framework (ArrayList, HashMap).
+
+[ ] Implement Custom User-Defined Exceptions (InsufficientFundsException, AccountNotFoundException).
+
+[ ] Persistent Storage via File I/O & JDBC / MySQL integration.
+
+[ ] Transition to Spring Boot REST API & Spring Security.
