@@ -66,10 +66,11 @@ public class BankService implements BankOperations {
 	public void transfer(String fromAccountNumber, String toAccountNumber, double amount) {
 		Customer sender = findCustomer(fromAccountNumber);
 		Customer receiver = findCustomer(toAccountNumber);
-		if (sender == null) throw new IllegalArgumentException("Sender account not found.");
-		if (receiver == null) throw new IllegalArgumentException("Receiver account not found.");
+		if (sender == null)
+			throw new IllegalArgumentException("Sender account not found.");
+		if (receiver == null)
+			throw new IllegalArgumentException("Receiver account not found.");
 
-		
 		sender.getAccount().withdraw(amount);
 		receiver.getAccount().deposit(amount);
 		Transaction transaction = new Transaction(("TXN" + (++transactionSequence)), "TRANSFER_OUT", amount,
@@ -85,7 +86,7 @@ public class BankService implements BankOperations {
 	public void displayAccountDetails(String accountNumber) {
 		Customer customer = findCustomer(accountNumber);
 		if (customer == null) {
-		    throw new IllegalArgumentException("Account " + accountNumber + " not found.");
+			throw new IllegalArgumentException("Account " + accountNumber + " not found.");
 		}
 		customer.displayCustomerDetails();
 
@@ -94,18 +95,20 @@ public class BankService implements BankOperations {
 	@Override
 	public void displayTransactionHistory(String accountNumber) {
 		Customer customer = findCustomer(accountNumber);
-		if(customer == null) {
-			throw new IllegalArgumentException("Error: Account "+ accountNumber + " not found. ");
+		if (customer == null) {
+			throw new IllegalArgumentException("Error: Account " + accountNumber + " not found. ");
 		}
-		
+
 		Account account = customer.getAccount();
 		Transaction[] transactions = account.getTransactions();
-		
-		System.out.println("====================Transaction History ("+ accountNumber + ") ============================");
-		for(int i=0; i < customer.getAccount().getTransactionCount(); i++) {
-			transactions[i].displayTransaction();			
+
+		System.out.println(
+				"====================Transaction History (" + accountNumber + ") ============================");
+		for (int i = 0; i < customer.getAccount().getTransactionCount(); i++) {
+			transactions[i].displayTransaction();
 		}
-		System.out.println("===========================================================================================");
+		System.out
+				.println("===========================================================================================");
 	}
 
 }
